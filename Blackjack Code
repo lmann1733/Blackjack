@@ -1,0 +1,88 @@
+clear all
+close all
+clc
+
+cards = randi([1 11],1,2);
+house_sum = sum(cards)
+
+while house_sum <= 16  %run through while loop to automate dealing
+   cards(end +1) = randi(11);
+   house_sum = sum(cards)
+   %sum(cards+1) >= 21;
+   %break 
+ 
+       
+  
+   %value cards sums up cards, use sum command to sum up these cards
+   %you cannot change value cards, assign a variable to the sum 
+end
+
+
+
+
+
+
+
+
+
+player_cards = randi([1 11],1,2)
+player_sum = sum(player_cards)
+
+while player_sum <= 1 %run through while loop to automate dealing
+   player_cards(end) = randi(11);
+   player_sum = sum(player_cards)
+ 
+       
+  
+   %value cards sums up cards, use sum command to sum up these cards
+   %you cannot change value cards, assign a variable to the sum 
+end
+
+
+while player_sum <= 21
+x = input('do you want another card? write 1 for yes and 0 for no');
+if x == 1;
+player_sum = player_sum + randi([1 11]);
+disp(player_sum)
+else if x == 0;
+break
+    
+end
+end  
+end
+
+if player_sum > 21
+    disp('you busted')
+else if player_sum > house_sum
+    disp('you have beat the house');
+else if house_sum > player_sum
+        disp('you have lost try again');
+    
+        
+    end
+end
+end
+
+%in figure display the house hand at the end 
+%Everythign looks good
+
+
+
+
+f1 = figure;
+width = 8;
+height = 5;
+set(f1,'Units','Inches','Position',[1 1 width height]); 
+hold on
+axis([0 width 0 height])
+axis equal
+text(3,5,'Blackjack!','Fontsize',25);
+patch([0 1 1 0],[3 3 3+1.5 3+1.5],'k')
+patch([1.1 2.1 2.1 1.1],[3 3 3+1.5 3+1.5],'k')
+patch([2.2 3.2 3.2 2.2],[3 3 3+1.5 3+1.5],'k')
+%patch([3.1 4.1 4.1 3.1],[3 3 3+1.5 3+1.5],'k')
+%axis([0 width 0 height])
+axis off 
+text(1/3,3+1.5/2,num2str(cards,1),'Color','r','fontsize',25)
+%text(2.4,3+1.5/2,num2str(cards,2),'Color','r','fontsize',25)
+%text(4.4,3+1.5/2,num2str(cards,3),'Color','r','fontsize',25)
